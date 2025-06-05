@@ -11,18 +11,18 @@ import (
 // }
 // Like Stringer, fmt will
 
-type MyError struct {
+type DivisionError struct {
 	Message string
 	Time    time.Time
 }
 
-func (e *MyError) Error() string {
-	return fmt.Sprintf("Error: %s at %s", e.Message, e.Time)
+func (err *DivisionError) Error() string {
+	return fmt.Sprintf("Error: %s at %s", err.Message, err.Time.Format(time.RFC3339))
 }
 
 func division(x, y int) (int, error) {
 	if y == 0 {
-		return 0, &MyError{
+		return 0, &DivisionError{
 			Message: "Division by zero is not allowed",
 			Time:    time.Now(),
 		}
