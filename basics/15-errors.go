@@ -18,7 +18,7 @@ type DivisionError struct {
 }
 
 func (err *DivisionError) Error() string {
-	return fmt.Sprintf("Error: %s at %s", err.Message, err.Time.Format(time.RFC3339))
+	return fmt.Sprintf("customError: %s at %s", err.Message, err.Time.Format(time.RFC3339))
 }
 
 func division(x, y int) (int, error) {
@@ -37,9 +37,16 @@ func division(x, y int) (int, error) {
 // The error returned by errors.New() is of type error, which implements the Error() method.
 func sum(x, y int) (int, error) {
 	if x < 0 || y < 0 {
-		return 0, errors.New("sum cannot be calculated for negative numbers")
+		return 0, errors.New("errors.New(): sum cannot be calculated for negative numbers")
 	}
 	return x + y, nil
+}
+
+// Furthermore, we can use fmt.Errorf to create formatted error messages.
+// This allows us to include dynamic values in the error message.
+// It is a good middle ground between custom error types and simple error messages.
+func fmtError(x, y int) error {
+	return fmt.Errorf("fmt.Errorf: cannot calculate sum of %d and %d: negative numbers are not allowed", x, y)
 }
 
 func errorHandling() {
@@ -55,5 +62,10 @@ func errorHandling() {
 		fmt.Println(err)
 	} else {
 		fmt.Println(res2)
+	}
+
+	err = fmtError(10, 20) // This will return a formatted fmt.Errorf() error
+	if err != nil {
+		fmt.Println(err)
 	}
 }
