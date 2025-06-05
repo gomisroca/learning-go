@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -30,15 +31,26 @@ func division(x, y int) (int, error) {
 	return x / y, nil
 }
 
-func errors() {
-	res1, err := division(10, 2) // This will not return an error
+// We don't need to define a custom error type if we don't need additional context.
+// We can use the built-in errors.New() function to create a simple error.
+// This is useful for simple error messages without additional context.
+// The error returned by errors.New() is of type error, which implements the Error() method.
+func sum(x, y int) (int, error) {
+	if x < 0 || y < 0 {
+		return 0, errors.New("sum cannot be calculated for negative numbers")
+	}
+	return x + y, nil
+}
+
+func errorHandling() {
+	res1, err := division(10, 0) // This will return a custom error
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		fmt.Println(res1)
 	}
 
-	res2, err := division(10, 0) // This will return an error
+	res2, err := sum(10, -10) // This will return a regular errors.New() error
 	if err != nil {
 		fmt.Println(err)
 	} else {
