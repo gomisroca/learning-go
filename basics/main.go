@@ -15,5 +15,7 @@ func main() {
 	// arrays()
 	// maps()
 	// methods()
-	interfaces()
+	// interfaces()
+	// stringer()
+	errors()
 }
