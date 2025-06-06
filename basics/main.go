@@ -17,5 +17,6 @@ func main() {
 	// methods()
 	// interfaces()
 	// stringer()
-	errorHandling()
+	// errorHandling()
+	readers()
 }
