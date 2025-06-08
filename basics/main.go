@@ -19,5 +19,7 @@ func main() {
 	// stringer()
 	// errorHandling()
 	// readers()
-	rot13reader()
+	// rot13reader()
+	// picSlices()
+	images()
 }
