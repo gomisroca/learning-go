@@ -9,6 +9,28 @@ import (
 func switches() {
 	fmt.Print("Go runs on ")
 
+	// Simple switch statement
+	i := 2
+	switch i {
+		case 1:
+			fmt.Println("one.")
+		case 2:
+			fmt.Println("two.")
+		case 3:
+			fmt.Println("three.")
+		default: // Default is optional, but good practice
+			fmt.Println("I don't know.")
+	}
+
+	// We can have multiple cases separated by commas
+	switch time.Now().Weekday() {
+		case time.Saturday, time.Sunday:
+			fmt.Println("It's the weekend.")
+		default:
+			fmt.Println("It's a weekday.")
+	}
+
+
 	// Just like if statements or for loops, we can make a small statement before the switch block
 	// in this case, "os := runtime.GOOS", which will only be available in the switch block
 	switch os := runtime.GOOS; os {
@@ -31,4 +53,20 @@ func switches() {
 		default: // else
 			fmt.Println("Good evening.")
 	}
+
+	// We can also use a type switch to compare types instead of values
+	whatAmI := func(i interface{}) {
+		// t will be the type of i
+		switch t := i.(type) {
+			case bool:
+				fmt.Println("I'm a bool")
+			case int:
+				fmt.Println("I'm an int")
+			default:
+				fmt.Printf("Don't know type %T\n", t)
+		}
+    }
+    whatAmI(true)
+    whatAmI(1)
+    whatAmI("hey")
 }

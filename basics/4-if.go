@@ -25,6 +25,15 @@ func ifElse() {
 	} else {
 		fmt.Println("2^3 is not greater than 10")
 	}
-
 	// return v // This would cause an error, v is not in scope here
+
+	// Logical operators are also available
+	if x > 5 && x < 10 {
+		fmt.Println("x is between 5 and 10")
+	}
+	if x == 5 || x == 10 {
+		fmt.Println("x is either 5 or 10")
+	}
+
+	// There is no ternary operator in Go (ex. x > 5 ? true : false) We need to use a full if statement
 }
