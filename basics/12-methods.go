@@ -9,6 +9,10 @@ type Vtx struct {
 	X, Y float64
 }
 
+type rect struct {
+	width, height int
+}
+
 type myInt int
 
 // We declare input before naming the method
@@ -35,6 +39,14 @@ func (v *Vtx) Scale(f float64) {
 // But this is not idiomatic Go, and we would lose the ability to call it like a method.
 // We would have to call it like this: `Abs(v)` instead of `v.Abs()`.
 
+func (r *rect) area() int {
+	return r.width * r.height
+}
+
+func (r rect) perimeter() int {
+	return 2*(r.width + r.height)
+}
+
 // My own implementation of a method on a string-like type
 type Word string
 
@@ -60,4 +72,14 @@ func methods() {
 	fmt.Println(w) // hello
 	w.Capitalize()
 	fmt.Println(w) // Hello
+
+	r := rect{10, 5}
+
+	fmt.Println("Area: ", r.area()) // Area: 50
+	fmt.Println("Perimeter: ", r.perimeter()) // Perimeter: 30
+
+	// Go automatically handles conversion between values and pointers for method calls
+	rp := &r
+	fmt.Println("Area: ", rp.area()) // Area: 50
+	fmt.Println("Perimeter: ", rp.perimeter()) // Perimeter: 30
 }
