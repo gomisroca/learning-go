@@ -26,4 +26,10 @@ func pointers() {
 	*p, *k = 100, 1000
 	fmt.Println(*p) // 100
 	fmt.Println(*k) // 1000
+
+	h := 1
+	fmt.Println("before:", h)
+	l := &h
+	*l = 2
+	fmt.Println("after:", h)
 }
