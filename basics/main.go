@@ -13,7 +13,8 @@ func main() {
 	// pointers()
 	// structs()
 	// arrays()
-	// maps()
+	// slices()
+	mapsInfo()
 	// methods()
 	// interfaces()
 	// stringer()
@@ -21,5 +22,5 @@ func main() {
 	// readers()
 	// rot13reader()
 	// picSlices()
-	images()
+	// images()
 }

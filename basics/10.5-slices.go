@@ -20,6 +20,7 @@ func slices() {
 	s[0] = "a"
     s[1] = "b"
     s[2] = "c"
+	// s[10] = "d" // This would panic because we are out of bounds
     fmt.Println("set:", s) // set: [ a b c ]
     fmt.Println("get:", s[2]) // get: c
 	fmt.Println("len:", len(s)) // len: 3
@@ -33,6 +34,10 @@ func slices() {
 	c := make([]string, len(s)) // Here we are making an empty slice of the same length as s
     copy(c, s) // And copying the contents of s into c
     fmt.Println("cpy:", c) // cpy: [ a b c d e f ]
+
+	// As a side note, it seems like in Go functions, the destination is always the first argument, and the source is always the second argument
+	// copy(c, s) ==> c is the destination, s is the source
+	// append(s, 'a') ==> s is the destination, 'a' is the source
 
 	// We can also get a slice of a slice
 	l := s[2:5] // the low bound is included, the high bound is not
