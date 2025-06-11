@@ -1,32 +1,92 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"reflect"
+)
 
 // An interface is a type that defines a set of methods
 // A type implements an interface by implementing its methods
-type Abser interface {
-	Abs() float64
+type geometry  interface { 
+	area() float64
+	perimeter() float64
+	// sin() float64 // If we add another method, it will have to be implemented by the structs that want to implement the 'geometry'interface
+}
+
+type triangle struct {
+	a, b, c float64
+}
+
+type circle struct {
+	radius float64
+}
+
+// To implement an interface, we need to implement all the methods on the struct
+func (c circle) area() float64 {
+    return math.Pi * c.radius * c.radius
+}
+func (c circle) perimeter() float64 {
+    return 2 * math.Pi * c.radius
+}
+func (c circle) String() string {
+	return fmt.Sprintf("Circle with radius %g", c.radius)
+}
+
+func (t triangle) area() float64 {
+    return t.a * t.b * t.c / 2
+}
+func (t triangle) perimeter() float64 {
+    return t.a + t.b + t.c
+}
+func (t triangle) String() string {
+	return fmt.Sprintf("Triangle with sides %g, %g, %g", t.a, t.b, t.c)
+}
+
+// We will be able to pass any type that implements the geometry interface to this function
+func measure(g geometry) {
+	fmt.Println(g)
+	fmt.Println("Area:", g.area())
+	fmt.Println("Perimeter:", g.perimeter())
+}
+
+// We can use type assertions to check the type
+func detectCircle(g geometry) {
+    if c, ok := g.(circle); ok {
+        fmt.Println("This is a circle with a radius of", c.radius)
+    } else {
+		// Here, %T would print the type of reflect.TypeOf(g).Name(), which would be a string
+		// %v would print the value of reflect.TypeOf(g).Name(), which would be whatever the type of g is
+		fmt.Printf("This is not a circle, this is a %v!\n", reflect.TypeOf(g).Name())
+	}
+
+	// We can do the same with a type switch
+	// switch t := g.(type) {
+	// case circle:
+	// 	fmt.Println("This is a circle with a radius of", t.radius)
+	// default:
+	// 	fmt.Printf("This is not a circle, this is a %v!\n", reflect.TypeOf(t).Name())
+	// }
 }
 
 func interfaces() {
-	var a Abser // a is an interface that can hold any type that implements the Abs() method
+	t := triangle{3, 4, 5}
+	c := circle{5}
 
-	// If the valus of a is not set, it will be nil
-	// If we try to call a.Abs() now, it will panic because a is nil
+	// If the values of t or c were not set, they would be nil
+	// If we tried calling t.area() and it was nil, it would panic
 	// We usually check inside the method if the receiver is nil, and handle it gracefully
 
-	// i := myInt(5)
-	v := Vtx{3, 4}
+	measure(t)
+	measure(c)
 
-	// In lesson 12, we defined a method Abs() on Vtx, so we can assign a Vtx to an Abser
-
-	// a = i // This will not work, because myInt does not implement the Abs() method
-	a = v // This works because Vtx implements the Abs() method
-
-	fmt.Println(a.Abs()) // 5
+	detectCircle(t)
+	detectCircle(c)
 
 	// We can also check if an interface holds a specific type using a type assertion
-	var i interface{} = "hello" // empty interface can hold any type
+	var i any = "hello" 
+		// empty interface can hold any type
+	 	// any is an alias for interface{} (empty interface) and is equivalent to interface{} in all ways.
 	s := i.(string) // here we are assuming that i holds a string
 	fmt.Println(s)
 	// If we are not sure that i holds a string, we can use a comma-ok idiom
