@@ -8,7 +8,10 @@ import (
 
 // An interface is a type that defines a set of methods
 // A type implements an interface by implementing its methods
-type geometry  interface { 
+
+// 🥸 “I don’t care what you are, but if you have my methods — then you're a geometry.”
+// So any type that implements area() and perimeter() is a 'geometry', regardless of anything else.
+type geometry interface { 
 	area() float64
 	perimeter() float64
 	// sin() float64 // If we add another method, it will have to be implemented by the structs that want to implement the 'geometry'interface
