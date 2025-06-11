@@ -9,7 +9,7 @@ type ServerState int // This is our enum type, which has an underlying type of i
 
 const (
 	StateIdle ServerState = iota // iota is a special constant that starts at 0 and increments by 1 for each enum value
-	StateConnected
+	StateConnected // If we use the same type, we can omit the type and iota keyword, but technically we could add "ServerSttate = iota" here too
 	StateError
 	StateRetrying
 )
