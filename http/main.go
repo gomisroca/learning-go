@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
@@ -54,12 +56,40 @@ func refreshTokenHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Token refreshed successfully! New token: %s\n", newToken)
 }
 
-func main() {
-	fs := http.FileServer(http.Dir("static/"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+func greetingHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	greeting := vars["greeting"]
+	name := vars["name"]
+	fmt.Fprintf(w, "%s, %s!", greeting, name)
+}
 
-	http.HandleFunc("/", helloHandler)
-	http.HandleFunc("/login", loginHandler)
-	http.HandleFunc("/refresh-token", refreshTokenHandler)
-	http.ListenAndServe(":8080", nil)
+func main() {
+	// Create a new router using Gorilla Mux
+	// This router will handle the routing of HTTP requests to the appropriate handlers
+	r := mux.NewRouter()
+
+	// Serve static files from the "static" directory
+	fs := http.FileServer(http.Dir("static/"))
+	r.Handle("/static/", http.StripPrefix("/static/", fs))
+
+	// Define routes and their handlers
+	r.HandleFunc("/", helloHandler).Methods("GET")
+	r.HandleFunc("/login", loginHandler).Methods("POST")
+	r.HandleFunc("/refresh-token", refreshTokenHandler).Methods("GET")
+
+	// Example of a route with path parameters
+	r.HandleFunc("/greeting/{greeting}/{name}", greetingHandler).Methods("GET")
+
+	// Subrouter example
+	bookRouter := r.PathPrefix("/books").Subrouter()
+	bookRouter.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "List of books")
+	}).Methods("GET")
+	bookRouter.HandleFunc("/{id}", func(w http.ResponseWriter, r *http.Request) {
+		vars := mux.Vars(r)
+		id := vars["id"]
+		fmt.Fprintf(w, "Details of book with ID: %s", id)
+	}).Methods("GET")
+
+	http.ListenAndServe(":8080", r)
 }
