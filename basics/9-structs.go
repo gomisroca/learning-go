@@ -10,7 +10,7 @@ type person struct {
 // This function creates a new person struct with the given name and age
 func newPerson(name string, age int) *person {
 	p := person{name, age}
-	return &p
+	return &p  // We return a pointer to the struct, so we can modify it later
 }
 
 func structs() {

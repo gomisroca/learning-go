@@ -17,6 +17,8 @@ func pointers() {
 	// We can access the address directly
 	fmt.Println(p) // &{2701}
 	fmt.Println(k) // &{42}
+	// We don't need to assign the address to a variable to access it
+	fmt.Println(&i) // &{42} 
 
 	// With * we can access the value stored at the address
 	fmt.Println(*p) // 42

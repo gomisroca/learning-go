@@ -14,7 +14,7 @@ import (
 type geometry interface { 
 	area() float64
 	perimeter() float64
-	// sin() float64 // If we add another method, it will have to be implemented by the structs that want to implement the 'geometry'interface
+	// sin() float64 // If we add another method, it will have to be implemented by the structs that want to implement the 'geometry' interface
 }
 
 type triangle struct {
