@@ -22,10 +22,12 @@ func main() {
 	// enums()
 	// structEmbedding()
 	// generics()
-	iterators()
+	// iterators()
 	// errorHandling()
+	// customErrors()
 	// readers()
 	// rot13reader()
 	// picSlices()
 	// images()
+	goroutines()
 }
