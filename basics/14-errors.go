@@ -45,8 +45,16 @@ func sum(x, y int) (int, error) {
 // Furthermore, we can use fmt.Errorf to create formatted error messages.
 // This allows us to include dynamic values in the error message.
 // It is a good middle ground between custom error types and simple error messages.
-func fmtError(x, y int) error {
-	return fmt.Errorf("fmt.Errorf: cannot calculate sum of %d and %d: negative numbers are not allowed", x, y)
+// A sentinel error is a predeclared variable that is used to signify a specific error condition.
+var ErrOutOfTea = fmt.Errorf("no more tea available")
+var ErrPower = fmt.Errorf("can't boil water")
+func makeTea(arg int) error {
+    if arg == 2 {
+        return ErrOutOfTea
+    } else if arg == 4 {
+        return fmt.Errorf("making tea: %w", ErrPower)
+    }
+    return nil
 }
 
 func errorHandling() {
@@ -64,8 +72,19 @@ func errorHandling() {
 		fmt.Println(res2)
 	}
 
-	err = fmtError(10, 20) // This will return a formatted fmt.Errorf() error
-	if err != nil {
-		fmt.Println(err)
-	}
+	// error.Is() is used to check if an error is of a specific type or matches a specific error value.
+	// It is useful for checking if an error is a sentinel error or a specific custom error
+ 	for i := range 5 {
+        if err := makeTea(i); err != nil {
+            if errors.Is(err, ErrOutOfTea) {
+                fmt.Println("We should buy new tea!")
+            } else if errors.Is(err, ErrPower) {
+                fmt.Println("Now it is dark.")
+            } else {
+                fmt.Printf("unknown error: %s\n", err)
+            }
+            continue
+        }
+        fmt.Println("Tea is ready!")
+    }
 }
