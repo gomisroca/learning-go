@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func slices() {
+func mainSlices() {
 	// Slices are similar to arrays, but they are mutable
 	// An uninitialized slice is nil, and its length and capacity are both zero
 	var s []string
