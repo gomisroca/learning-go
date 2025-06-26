@@ -29,5 +29,8 @@ func main() {
 	// rot13reader()
 	// picSlices()
 	// images()
-	goroutines()
+	// goroutines()
+	// channels()
+	// channelBuffering()
+	channelSync()
 }
