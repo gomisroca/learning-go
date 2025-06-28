@@ -66,6 +66,26 @@ func switches() {
 				fmt.Printf("Don't know type %T\n", t)
 		}
     }
+
+
+	// If we want to break out of a switch statement, we can use the keyword "break"
+	// If we want to break from a loop containing a switch statement,
+	// We need to use a label for the loop and break out of that label
+	Loop: // This is a label
+		for i := range 10 {
+			switch i {
+				case 0:
+					fmt.Println("zero")
+					continue Loop // This will continue the loop named "Loop"
+				case 1:
+					fmt.Println("one")
+				case 2:
+					fmt.Println("two")
+					break Loop // This will break out of the loop named "Loop"
+				default:
+					fmt.Println("other")
+			}
+		}
     whatAmI(true)
     whatAmI(1)
     whatAmI("hey")
