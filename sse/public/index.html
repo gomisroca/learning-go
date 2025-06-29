@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SSE with Go</title>
+  </head>
+  <body>
+    <h1>SSE Time Stream</h1>
+    <div id="messages"></div>
+
+    <script>
+      const eventSource = new EventSource("/events");
+
+      eventSource.onmessage = function (event) {
+        const div = document.getElementById("messages");
+        const p = document.createElement("p");
+        p.textContent = `Server time: ${event.data}`;
+        div.appendChild(p);
+      };
+    </script>
+  </body>
+</html>
