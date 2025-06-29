@@ -33,5 +33,6 @@ func main() {
 	// channels()
 	// channelBuffering()
 	// channelSync()
-	channelDirections()
+	// channelDirections()
+	channelSelect()
 }
