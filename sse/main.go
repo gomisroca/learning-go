@@ -22,8 +22,8 @@ func sseHandler(w http.ResponseWriter, r *http.Request) {
 
 	// 👇 Stream data every second
 	for { // 👈 Infinite loop
-		// The EventSource JS API will take this "data: content\n\n" 
-		// and parse it to display the content
+		// The EventSource JS API will take this "data: content\n\n" and parse it
+		// So the event.data will be f.e "2025-06-29T15:45:00Z"
 		fmt.Fprintf(w, "data: %s\n\n", time.Now().Format(time.RFC3339))
 		flusher.Flush() // 👈 Flush data to client
 		time.Sleep(1 * time.Second)
