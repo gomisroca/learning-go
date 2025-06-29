@@ -43,4 +43,25 @@ func channelSelect() {
         // default:
         //     fmt.Println("no message received")
     }
+
+
+    // My own implmentation of a select statement
+    numberCh := make(chan int)
+    messageCh := make(chan string)
+
+    // numberCh will be ready right away, while messageCh will wait for 2 seconds
+    go func() {
+        numberCh <- 42
+    }()
+    go func() {
+        time.Sleep(2 * time.Second)
+        messageCh <- "this is a message"
+    }()
+
+    select {
+    case num := <- numberCh:
+        fmt.Println("received number", num)
+    case msg := <- messageCh:
+        fmt.Println("received message", msg)
+    }
 }
