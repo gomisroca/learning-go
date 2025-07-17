@@ -11,4 +11,5 @@ func main() {
 	// nonblocking()
 	// timeouts()
 	// closingChannels()
+	rangeOverChannels()
 }
