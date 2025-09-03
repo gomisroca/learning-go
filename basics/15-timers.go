@@ -26,6 +26,8 @@ func timers() {
 		fmt.Println("Timer 2 stopped")
 	}
 
-	// Give the timers time to fire
+	// Give the timers time to fire, if they are going to
 	time.Sleep(2 * time.Second)
+
+	// The first timer will fire, but the second will not since it was stopped before it had a chance to fire.
 }
