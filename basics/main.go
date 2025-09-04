@@ -19,5 +19,6 @@ func main() {
 	// errorHandling()
 	// customErrors()
 	// goroutines()
-	timers()
+	// timers()
+	tickers()
 }
