@@ -20,5 +20,6 @@ func main() {
 	// customErrors()
 	// goroutines()
 	// timers()
-	tickers()
+	// tickers()
+	workerPools()
 }
