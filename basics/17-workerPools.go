@@ -37,6 +37,9 @@ func workerPools() {
 	// Collect the results from the results channel
 	for a := 1; a <= numJobs; a++ {
 		<-results
+		// If we want to print out the results:
+   		// result := <-results  
+		// fmt.Println("result:", result)
 	}
 
 	// The output should be something like this:
