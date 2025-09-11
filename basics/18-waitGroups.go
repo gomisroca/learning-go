@@ -19,11 +19,9 @@ func waitGroups() {
 	var wg sync.WaitGroup
 
 	for i := 1; i <= 5; i++ {
-		wg.Add(1) // Increment the WaitGroup counter by one.
-		go func(id int) {
-			wrkr(id)
-			wg.Done() // Decrement the WaitGroup counter by one.
-		}(i)
+	  	wg.Go(func() {
+            wrkr(i)
+        })
 	}
 
 	wg.Wait() // Wait for all goroutines to finish.
