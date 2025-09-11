@@ -21,5 +21,6 @@ func main() {
 	// goroutines()
 	// timers()
 	// tickers()
-	workerPools()
+	// workerPools()
+	waitGroups()
 }
