@@ -23,5 +23,7 @@ func main() {
 	// tickers()
 	// workerPools()
 	// waitGroups()
-	rateLimiting()
+	// rateLimiting()
+	// atomicCounters()
+	mutexes()
 }
