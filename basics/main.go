@@ -22,5 +22,6 @@ func main() {
 	// timers()
 	// tickers()
 	// workerPools()
-	waitGroups()
+	// waitGroups()
+	rateLimiting()
 }
