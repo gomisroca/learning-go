@@ -25,5 +25,6 @@ func main() {
 	// waitGroups()
 	// rateLimiting()
 	// atomicCounters()
-	mutexes()
+	// mutexes()
+	statefulGoroutines()
 }
