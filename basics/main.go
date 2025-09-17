@@ -27,5 +27,6 @@ func main() {
 	// atomicCounters()
 	// mutexes()
 	// statefulGoroutines()
-	sorting()
+	// sorting()
+	sortingByFunctions()	
 }
