@@ -28,5 +28,6 @@ func main() {
 	// mutexes()
 	// statefulGoroutines()
 	// sorting()
-	sortingByFunctions()	
+	// sortingByFunctions()	
+	panics()
 }
