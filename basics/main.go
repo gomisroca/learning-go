@@ -29,5 +29,6 @@ func main() {
 	// statefulGoroutines()
 	// sorting()
 	// sortingByFunctions()	
-	panics()
+	// panics()
+	advancedDefers()	
 }
