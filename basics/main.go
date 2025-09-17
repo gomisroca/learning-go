@@ -26,5 +26,6 @@ func main() {
 	// rateLimiting()
 	// atomicCounters()
 	// mutexes()
-	statefulGoroutines()
+	// statefulGoroutines()
+	sorting()
 }
