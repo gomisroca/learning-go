@@ -30,5 +30,6 @@ func main() {
 	// sorting()
 	// sortingByFunctions()	
 	// panics()
-	advancedDefers()	
+	// advancedDefers()
+	recovers()	
 }
