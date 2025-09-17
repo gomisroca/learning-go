@@ -31,5 +31,6 @@ func main() {
 	// sortingByFunctions()	
 	// panics()
 	// advancedDefers()
-	recovers()	
+	// recovers()
+	stringFns()	
 }
