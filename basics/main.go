@@ -33,5 +33,6 @@ func main() {
 	// advancedDefers()
 	// recovers()
 	// stringFns()	
-	stringFormatting()
+	// stringFormatting()
+	textTemplates()
 }
