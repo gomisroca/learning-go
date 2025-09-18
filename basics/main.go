@@ -32,5 +32,6 @@ func main() {
 	// panics()
 	// advancedDefers()
 	// recovers()
-	stringFns()	
+	// stringFns()	
+	stringFormatting()
 }
