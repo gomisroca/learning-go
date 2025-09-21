@@ -36,5 +36,6 @@ func main() {
 	// stringFormatting()
 	// textTemplates()
 	// regex()
-	jsons()
+	// jsons()
+	xmls()
 }
