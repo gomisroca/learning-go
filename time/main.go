@@ -2,5 +2,6 @@ package main
 
 func main() {
 	// timeBasics()
-	epochs()
+	// epochs()
+	formattingAndParsing()
 }
