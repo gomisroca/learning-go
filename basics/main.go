@@ -34,5 +34,6 @@ func main() {
 	// recovers()
 	// stringFns()	
 	// stringFormatting()
-	textTemplates()
+	// textTemplates()
+	regex()
 }
