@@ -37,5 +37,6 @@ func main() {
 	// textTemplates()
 	// regex()
 	// jsons()
-	xmls()
+	// xmls()
+	randomNumbers()
 }
