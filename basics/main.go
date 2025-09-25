@@ -40,5 +40,6 @@ func main() {
 	// xmls()
 	// randomNumbers()
 	// numberParsing()
-	urlParsing()
+	// urlParsing()
+	sha256Hashes()
 }
