@@ -39,5 +39,6 @@ func main() {
 	// jsons()
 	// xmls()
 	// randomNumbers()
-	numberParsing()
+	// numberParsing()
+	urlParsing()
 }
