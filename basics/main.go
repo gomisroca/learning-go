@@ -44,5 +44,6 @@ func main() {
 	// sha256Hashes()
 	// base64Encoding()
 	// commandLineArguments()
-	commandLineFlags()
+	// commandLineFlags()
+	commandLineSubcommands()
 }
