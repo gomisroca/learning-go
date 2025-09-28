@@ -6,5 +6,6 @@ func main() {
 	// lineFilters()
 	// filePaths()
 	// directories()
-	temporaryFiles()
+	// temporaryFiles()
+	embedDirective()
 }
