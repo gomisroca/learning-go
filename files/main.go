@@ -5,5 +5,6 @@ func main() {
 	// writingFiles()
 	// lineFilters()
 	// filePaths()
-	directories()
+	// directories()
+	temporaryFiles()
 }
