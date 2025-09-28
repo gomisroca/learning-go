@@ -42,5 +42,5 @@ func main() {
 	// numberParsing()
 	// urlParsing()
 	// sha256Hashes()
-	base64Encoding()
+	// base64Encoding()
 }
