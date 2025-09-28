@@ -45,5 +45,6 @@ func main() {
 	// base64Encoding()
 	// commandLineArguments()
 	// commandLineFlags()
-	commandLineSubcommands()
+	// commandLineSubcommands()
+	environmentVariables()
 }
