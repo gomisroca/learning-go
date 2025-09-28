@@ -4,5 +4,6 @@ func main() {
 	// readingFiles()
 	// writingFiles()
 	// lineFilters()
-	filePaths()
+	// filePaths()
+	directories()
 }
