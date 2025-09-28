@@ -43,4 +43,5 @@ func main() {
 	// urlParsing()
 	// sha256Hashes()
 	// base64Encoding()
+	commandLineArguments()
 }
