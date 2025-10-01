@@ -48,5 +48,6 @@ func main() {
 	// commandLineSubcommands()
 	// environmentVariables()
 	// logging()
-	httpClient()
+	// httpClient()
+	httpServer()
 }
