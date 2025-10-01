@@ -46,5 +46,6 @@ func main() {
 	// commandLineArguments()
 	// commandLineFlags()
 	// commandLineSubcommands()
-	environmentVariables()
+	// environmentVariables()
+	logging()
 }
