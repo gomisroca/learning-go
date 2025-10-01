@@ -53,5 +53,6 @@ func main() {
 	// context()
 	// spawningProcesses()
 	// execProcesses()
-	signals()
+	// signals()
+	exit()
 }
