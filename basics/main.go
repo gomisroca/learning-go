@@ -52,5 +52,6 @@ func main() {
 	// httpServer()
 	// context()
 	// spawningProcesses()
-	execProcesses()
+	// execProcesses()
+	signals()
 }
