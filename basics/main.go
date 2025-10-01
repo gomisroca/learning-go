@@ -50,5 +50,6 @@ func main() {
 	// logging()
 	// httpClient()
 	// httpServer()
-	context()
+	// context()
+	spawningProcesses()
 }
