@@ -47,5 +47,6 @@ func main() {
 	// commandLineFlags()
 	// commandLineSubcommands()
 	// environmentVariables()
-	logging()
+	// logging()
+	httpClient()
 }
