@@ -49,5 +49,6 @@ func main() {
 	// environmentVariables()
 	// logging()
 	// httpClient()
-	httpServer()
+	// httpServer()
+	context()
 }
