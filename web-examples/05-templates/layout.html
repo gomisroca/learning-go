@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- We access the top-most variable with {{.}} -->
+<h1>{{.PageTitle}}</h1>
+<ul>
+  <!-- We range over the Todos  -->
+  <!-- We also do an if-statement to check if the Todo is done -->
+  {{range .Todos}} {{if .Done}}
+  <li class="done">{{.Title}}</li>
+  {{else}}
+  <li>{{.Title}}</li>
+  {{end}} {{end}}
+</ul>
+
+<!-- 
+{{/* a comment */}}	            Defines a comment
+{{.}}	                        Renders the current element 
+{{.Title}}	                    Renders the “Title” field of the current element
+{{if .Done}} {{else}} {{end}}	Defines an if-Statement
+{{range .Todos}} {{.}} {{end}}	Loops over all “Todos” and renders each using {{.}}
+{{block "content" .}} {{end}}	Defines a block with the name “content” 
+-->
