@@ -26,3 +26,7 @@ One-method interfaces are named by the method name plus an -er suffix: Reader, W
 ### MixedCaps
 
 By convention, Go uses MixedCaps or mixedCaps, not underscores to write multi-word names.
+
+### Semicolons
+
+Idiomatic Go programs have semicolons only in places such as for loop clauses, to separate the initializer, condition, and continuation elements.
