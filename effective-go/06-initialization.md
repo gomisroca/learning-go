@@ -54,3 +54,15 @@ fmt.Println(ByteSize(1024))        // 1.00KB
 fmt.Println(ByteSize(1048576))     // 1.00MB
 fmt.Println(ByteSize(5368709120))  // 5.00GB
 ```
+
+### Variables
+
+Variables are initialized just like constants. The initializer can be a general expression computed at run time:
+
+```go
+var (
+    home   = os.Getenv("HOME")
+    user   = os.Getenv("USER")
+    gopath = os.Getenv("GOPATH")
+)
+```
