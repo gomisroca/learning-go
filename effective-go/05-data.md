@@ -197,8 +197,6 @@ fmt.Println("Hello", 23)
 fmt.Println(fmt.Sprint("Hello ", 23))
 ```
 
-### Format-strings and Default Formats
-
 - If we want default formatting (e.g., decimals for integers) we can use the “catch-all” format `%v`. It works for any value, including arrays, slices, structs, maps.
 - Example:
 
@@ -224,9 +222,7 @@ map[CST:-21600 EST:-18000 MST:-25200 PST:-28800 UTC:0]
 
   - `%T` — prints the type of a value.
 
-### Customizing output via String()
-
-- If you want to control the default format for a custom type, define a method with the signature String() string on that type. Then when you print it (with %v or the default) it will use your String() result.
+- If we want to control the default format for a custom type, define a method with the signature String() string on that type. Then when we print it (with %v or the default) it will use our String() result.
 - Example:
 
 ```go
@@ -235,4 +231,29 @@ func (t *T) String() string {
     return fmt.Sprintf("%d/%g/%q", t.a, t.b, t.c)
 }
 // Then fmt.Printf("%v\n", t) prints something like: 7/-2.35/"abc\tdef"
+```
+
+### Append
+
+The signature of `append` is:
+
+```go
+func append(slice []T, elems ...T) []T
+```
+
+It appends the elements to the end of the slice and returns the result.
+
+```go
+x := []int{1,2,3}
+x = append(x, 4, 5, 6)
+fmt.Println(x) // [1 2 3 4 5 6]
+```
+
+We can also append a slice to a slice with `append(slice, slice...)`.
+
+```go
+x := []int{1,2,3}
+y := []int{4,5,6}
+x = append(x, y...)
+fmt.Println(x) // [1 2 3 4 5 6]
 ```
