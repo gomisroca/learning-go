@@ -66,3 +66,25 @@ var (
     gopath = os.Getenv("GOPATH")
 )
 ```
+
+### init()
+
+Each source file can define an `init` function. It sets up whatever state the file needs to work. It is called after all the package-level variables have been initialized.
+
+A common use of `init` is to verify or repair the program state before real execution begins:
+
+```go
+func init() {
+    if user == "" {
+        log.Fatal("$USER not set")
+    }
+    if home == "" {
+        home = "/home/" + user
+    }
+    if gopath == "" {
+        gopath = home + "/go"
+    }
+    // gopath may be overridden by --gopath flag on command line.
+    flag.StringVar(&gopath, "gopath", gopath, "override default GOPATH")
+}
+```
