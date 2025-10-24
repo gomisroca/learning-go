@@ -13,3 +13,32 @@ if _, err := os.Stat(path); os.IsNotExist(err) {
     fmt.Printf("%s does not exist\n", path)
 }
 ```
+
+### Unused Imports and Variables
+
+We shouldn't import a pkg or declare a variable if we aren't going to use it. However, under certain circumstances, we might want unused imports or variables. We can use the blank identifier for that:
+
+```go
+package main
+
+import (
+    "fmt"
+    "io"
+    "log"
+    "os"
+)
+
+var _ = fmt.Printf // For debugging; delete when done.
+var _ io.Reader    // For debugging; delete when done.
+
+func main() {
+    fd, err := os.Open("test.go")
+    if err != nil {
+        log.Fatal(err)
+    }
+    // TODO: use fd.
+    _ = fd
+}
+```
+
+By convention, these blank declarations come right after the imports and are commented.
