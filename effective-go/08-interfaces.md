@@ -95,3 +95,9 @@ if ok {
     fmt.Printf("value is not a string\n")
 }
 ```
+
+### Generality
+
+If a type exists only to implement an interface and will never have exported methods beyond it, we don't need to export the type. We export the interface instead.
+
+In these cases, the constructor should return an interface value, not the type.
