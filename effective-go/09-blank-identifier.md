@@ -52,3 +52,13 @@ import _ "net/http/pprof"
 ```
 
 This way we declare the pkg is imported for its side effects, but there is no other use for it.
+
+### Interface Checks
+
+If it's necessary only to ask whether a type implements an interface, without actually using the interface itself, perhaps as part of an error check, use the blank identifier to ignore the type-asserted value:
+
+```go
+if _, ok := val.(json.Marshaler); ok {
+    fmt.Printf("value %v of type %T implements json.Marshaler\n", val, val)
+}
+```
