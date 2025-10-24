@@ -42,3 +42,13 @@ func main() {
 ```
 
 By convention, these blank declarations come right after the imports and are commented.
+
+### Import for Side Effect
+
+Blank assignments identify code as WIP. However, sometimes we need to import a package for its side effects. We can use the blank identifier to do that:
+
+```go
+import _ "net/http/pprof"
+```
+
+This way we declare the pkg is imported for its side effects, but there is no other use for it.
