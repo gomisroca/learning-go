@@ -65,3 +65,33 @@ func (s Sequence) String() string {
     return fmt.Sprint([]int(s))
 }
 ```
+
+### Interface Conversions and Type Assertions
+
+Type Switches take an interface and convert it to a concrete type.
+For example, we might want the actual string if the value is a string, or the return of String() if it is implemented:
+
+```go
+type Stringer interface {
+    String() string
+}
+
+var value interface{} // Value provided by caller.
+switch str := value.(type) {
+case string:
+    return str
+case Stringer:
+    return str.String()
+}
+```
+
+Type Assertions takes an interface values and extracts from it a value of a specified type. If type assertion fails, it will crash the program. We use "comma, ok" to test the assertion safely:
+
+```go
+str, ok := value.(string)
+if ok {
+    fmt.Printf("string value is: %q\n", str)
+} else {
+    fmt.Printf("value is not a string\n")
+}
+```
