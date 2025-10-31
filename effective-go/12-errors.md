@@ -40,3 +40,28 @@ func init() {
 ```
 
 It is usually better to avoid `panic`. If possible, problems should be masked or worked around to keep the program running.
+
+### Recover
+
+If panic happens, we can use `recover` to regain control of the program and resume normal execution.
+
+A common sue is recover is shutting down a failing goroutine without killing the whole program:
+
+```go
+func server(workChan <-chan *Work) {
+    for work := range workChan {
+        go safelyDo(work)
+    }
+}
+
+func safelyDo(work *Work) {
+    defer func() {
+        if err := recover(); err != nil {
+            log.Println("work failed:", err)
+        }
+    }()
+    do(work)
+}
+```
+
+If `do(work)` panics, the error will be logged and the goroutine will exit cleanly.
