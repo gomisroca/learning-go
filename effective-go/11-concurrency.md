@@ -75,3 +75,32 @@ func Serve(clientRequests chan *Request, quit chan bool) {
     <-quit  // Wait to be told to exit.
 }
 ```
+
+### Channels of Channels
+
+A channel is a first-class value and can be allocated and passed around like any other value. For example earlier we didn't define how Request looks:
+
+```go
+type Request struct {
+    args []int
+    f func([]int) int
+    resultChan chan int
+}
+```
+
+It provides a function and its arguments, and a channel to receive the result into:
+
+```go
+func sum(a []int) (s int) {
+    for _, v := range a {
+        s += v
+    }
+    return
+}
+
+request := &Request{[]int{3, 4, 5}, sum, make(chan int)}
+// Send request
+clientRequests <- request
+// Wait for response.
+fmt.Printf("answer: %d\n", <-request.resultChan)
+```
